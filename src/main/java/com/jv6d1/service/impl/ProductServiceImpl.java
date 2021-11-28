@@ -3,6 +3,8 @@ package com.jv6d1.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jv6d1.entity.Product;
@@ -48,4 +50,28 @@ public class ProductServiceImpl implements ProductService {
 		
 		 proRepo.deleteById(id);
 	}
+
+	@Override
+	public Page<Product> findAll(Pageable page) {
+		
+		return proRepo.findAll(page);
+	}
+
+
+	@Override
+	public List<Product> fillByKeywords(String keywords) {
+		if(keywords!=null) {
+			return proRepo.fillByKeywords(keywords);
+			}
+			return proRepo.findAll();
+	}
+
+	@Override
+	public Page<Product> findByIdPage(String cid, Pageable page) {
+		
+		return proRepo.findByIdPage(cid, page);
+	}
+	
+	
+
 }

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Java6 Store Administation</title>
+    <title>Java6 Store Administration</title>
     
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -13,18 +13,50 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 </head>
 <body class="container" ng-app="admin-app">
+	<!--  
 	<header class="row">
 		<h2 class="alert alert-success">Website Administation</h2>
 	</header>
+	-->
+	
 	<div class="row">
-		<nav class="navbar navbar-inverse" style="font-variant: small-caps;">
+	
+	<!-- 
+	 	<nav class="navbar navbar-inverse" style="font-variant: small-caps;">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a><li>
 					<li><a href="#!product">Products</a><li>
 					<li><a href="#!authorize">Authorizing</a><li>
+					<li><a href="#!user">User manager</a><li>
 					<li><a href="/security/logoff">Sign out</a><li>
 				</ul>
+			</div>
+		</nav>
+	-->
+		<nav class="navbar navbar-inverse sticky-top" style="font-variant: small-caps;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				    <img src="/assets/images/hh1.png" style="width: 50px">
+				      <a class="navbar-brand" href="#" >
+							
+						</a>
+   			 	</div>
+				<ul class="nav navbar-nav">
+					<li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a><li>
+					<li><a href="#!product">Products</a><li>
+					<li><a href="#!authorize">Authorizing</a><li>
+					<li><a href="#!user">User management</a><li>
+					
+					
+				</ul>
+				
+				
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/security/logoff"><span class="glyphicon glyphicon-log-out"></span>Sign out</a><li>
+				</ul>
+				
 			</div>
 		</nav>
 	</div>
@@ -32,15 +64,43 @@
 		<p class="ng-view"/>
 	</main>
 	<footer>
-		<div class="panel panel-default">
-			<div class="panel-body text-center ">
-				<h3>Zo em ei &copy; 2021.All rights reserved</h3>
-			</div>
-		</div>
+		<div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="/assets/images/hh1.png" style="width: 50px">
+                    <hr class="light">
+                    <p>111-222-333</p>
+                    <p>Email@gmail.com</p>
+                    <p> Hà Nội, Việt Nam</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Working hours</h5>
+                    <hr class="light">
+                    <p>Monday-Friday: 8am - 5pm</p>
+                    <p>Weekend: 8am - 12 pm</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Services</h5>
+                    <hr class="light">
+                    <p>Outsourcing</p>
+                    <p>Website development</p>
+                    <p>Mobile application</p>
+                </div>
+                <div class="col-12">
+                  <hr class="light-100">
+                  <h5>&copy; bakayaro</h5>
+                </div>
+            </div>
+
+        </div>
 	</footer>
 	<!-- User-defined Scripts -->
 	<script src="/assets/admin/admin-app.js"></script>
 	<script src="/assets/admin/product/product-ctrl.js"></script>
 	<script src="/assets/admin/authority/authority-ctrl.js"></script>
+	<script src="/assets/admin/user/user-ctrl.js"></script>
+	
 </body>
 </html>

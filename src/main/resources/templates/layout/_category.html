@@ -1,11 +1,23 @@
 <div xmlns:th="http://www.thymeleaf.org">
+	<div class="panel panel-default">
+		<div class="panel-heading">Tìm Kiếm</div>
+		<div class="panel-body">
+			<form th:action="@{/product/list/search}">
+				<input th:value="${param.keywords}" name="keywords" class="form-control" placeholder="Keywords">
+				&nbsp;<p>
+				<input type="submit" value="Search">
+			</form>
+		</div>
+	</div>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <b class="glyphicon glyphicon-briefcase"></b> Danh mục
     </div>
     <div class="list-group">
+    <a th:href="@{/product/list}"
+       class="list-group-item">Tất cả</a>
       <a th:each="c: ${cates}" th:href="@{|/product/list?cid=${c.id}|}"
-       class="list-group-item">[[${c.name}]]</a>
+       class="list-group-item" >[[${c.name}]]</a>
       	
     </div>
   </div>

@@ -1,3 +1,4 @@
+<!--  
 <div xmlns:th="http://www.thymeleaf.org">
   <nav class="navbar navbar-inverse" style="font-variant: small-caps">
      <div class="container-fluid">
@@ -6,9 +7,10 @@
         	<th:block th:if="${#request.remoteUser}">
         		<li><a th:href="@{/security/logoff}">Sign Out</a></li>
         		<li><a th:href="@{/order/list}">Your Orders</a></li>
-        		<li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAFF')}">
+        		<li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
         			<a th:href="@{/admin/home/index}">Adminnistration</a>
         		</li>
+        		
         	</th:block>
         	<th:block th:unless="${#request.remoteUser}">
         		<li><a th:href="@{/security/login/form}">Sign In</a></li>
@@ -19,4 +21,82 @@
         	</ul>
      </div>
     </nav>
+</div>
+-->
+
+<div xmlns:th="http://www.thymeleaf.org">
+<nav class="navbar navbar-inverse sticky-top" style="font-variant: small-caps">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <img src="/assets/images/hh1.png" style="width: 50px">
+      <a class="navbar-brand" href="#" >
+			
+		</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{/}"><span class="glyphicon glyphicon-home" th:text="#{nav.home}"></span></a></li>
+      <th:block th:if="${#request.remoteUser}">
+        		<li><a th:href="@{/order/list}" th:text="#{nav.yourOders}"></a></li>
+        		<li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
+        			<a th:href="@{/admin/home}" th:text="#{nav.admin}"></a>
+        		</li>
+        	</th:block>
+    </ul>
+    
+    <ul class="nav navbar-nav" style="margin-top: 18px; margin-left:5px;"> 
+    
+    <li class="dropdown"> 
+		   <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" th:text="#{nav.language}">
+		   <span class="caret"></span></button> -->
+		   
+			<p data-toggle="dropdown"><a th:text="#{nav.language}" href="#" style="color: gray"></a></p>
+		  <ul class="dropdown-menu">
+		    <li><a href="?lang=en">English</a></li>
+		    <li><a href="?lang=vi">Tiếng Việt</a></li>
+		  </ul>
+	</li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      
+      <th:block th:unless="${#request.remoteUser}">
+      
+      			<li class="dropdown" style="margin-top: 10px; margin-left:5px; margin-right: 10px"> 
+					   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" th:text="#{nav.account}">Account
+					   <span class="caret"></span></button>
+					   
+						<ul class="dropdown-menu">
+						    <li><a th:href="@{/register}" ><span class="glyphicon glyphicon-user" th:text="#{nav.signUp}"></span></a></li>
+	      					<li><a th:href="@{/security/login/form}" ><span class="glyphicon glyphicon-log-in" th:text="#{nav.signIn}"></span></a></li>
+					    </ul>
+				</li>
+      
+      <!-- 
+      <li><a th:href="@{/register}" ><span class="glyphicon glyphicon-user" th:text="#{nav.signUp}"></span></a></li>
+      <li><a th:href="@{/security/login/form}" ><span class="glyphicon glyphicon-log-in" th:text="#{nav.signIn}"></span></a></li>
+      -->
+       
+      </th:block>
+      <th:block th:if="${#request.remoteUser}" >
+    			<li><a href="#"> Welcome [[${#request.remoteUser}]]</a> </li> 
+			    <li class="dropdown" style="margin-top: 10px; margin-left:5px; margin-right: 10px"> 
+					   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Account
+					   <span class="caret"></span></button>
+					   
+						<ul class="dropdown-menu">
+					    <li><a th:href="@{/account/formchangePassword}" th:text="#{nav.change}"></a></li>
+      					<li><a th:href="@{/security/logoff}" ><span class="glyphicon glyphicon-log-out" th:text="#{nav.signOut}"></span></a></li>
+					  </ul>
+				</li>
+   	 	
+      	<!--  
+        <li><a href="#"> Welcome [[${#request.remoteUser}]]</a> </li> 
+        <li><a href="#" data-toggle="modal" data-target="#myModal">Change PassWord</a></li>
+      	<li><a th:href="@{/security/logoff}" ><span class="glyphicon glyphicon-log-out" th:text="#{nav.signOut}"></span></a></li>
+      	-->
+      	
+      </th:block>
+    </ul>
+  </div>
+</nav>
 </div>

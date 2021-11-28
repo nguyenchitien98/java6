@@ -1,8 +1,14 @@
 package com.jv6d1.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jv6d1.service.AccountService;
+
+
 
 @Controller
 public class SecurityController {
@@ -34,6 +40,19 @@ public class SecurityController {
 	public String logoffSuccess(Model model) {
 		model.addAttribute("message","Bạn đã đăng xuất");
 		return "security/login";
+	}
+	
+	/*
+	 * Oauth2
+	 */
+	
+	@Autowired
+	AccountService accountService;
+	
+	@RequestMapping("/oauth2/login/success")
+	public String success(OAuth2AuthenticationToken oauth2) {
+		accountService.loginFromOAuth2(oauth2);
+		return "forward:/security/login/success";
 	}
 }
 

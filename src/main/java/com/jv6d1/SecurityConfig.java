@@ -57,20 +57,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().permitAll();
 		
 		http.formLogin()
-			.loginPage("/security/login/form")
-			.loginProcessingUrl("/security/login")
-			.defaultSuccessUrl("/security/login/success",false)
-			.failureUrl("/security/login/error");
+			.loginPage("/security/login/form") // trang dang nhap tuy chinh
+			.loginProcessingUrl("/security/login") // dung de subit username va password
+			.defaultSuccessUrl("/security/login/success",false) // trang dich khi dang nhap thanh cong
+			.failureUrl("/security/login/error"); // trang dich khi khong dang nhap thanh cong
 		
+		// Cấu hình remember me
 		http.rememberMe()
 			.tokenValiditySeconds(86400);
 		
+		// Chặn khi không có quyền
 		http.exceptionHandling()
 			.accessDeniedPage("/security/unauthoried");
 		
 		http.logout()
 			.logoutUrl("/security/logoff")
 			.logoutSuccessUrl("/security/logoff/success");
+		
+		// OAuth2 - Đăng nhập từ mạng xã hội
+		http.oauth2Login()
+		 	.loginPage("/security/login/form")
+		 	.defaultSuccessUrl("/oauth2/login/success",true)
+		 	.failureUrl("/security/login/error")
+		 	.authorizationEndpoint()
+		 		.baseUri("/oauth2/authorization");
 	}
 	
 	//Cơ chế mã hóa mật khẩu

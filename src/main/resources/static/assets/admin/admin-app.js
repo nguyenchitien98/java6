@@ -14,7 +14,11 @@ app.config(function ($routeProvider){
 		templateUrl: "/assets/admin/authority/unauthorized.html",
 		controller:"authority-ctrl"
 	})
+	.when("/user",{
+		templateUrl: "/assets/admin/user/index.html",
+		controller: "user-ctrl"
+	})
 	.otherwise({
-		template: "<h1 class='text-center'>FPT Polytechnic Administation</h1>"
+		template: "<h1 class='text-center'>Welcome to Administration</h1>"
 	})
 })

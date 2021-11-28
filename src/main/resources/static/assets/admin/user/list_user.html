@@ -1,0 +1,51 @@
+
+<div class="panel panel-default" ">
+	<div class="panel-heading">User LIST</div>
+	<div>
+		Order By: <select ng-model="sortColumn">
+			<option value="fullname">Name Asc</option>
+			<option value="email">Email Asc</option>
+			<option value="-fullname">Name Desc</option>
+			<option value="-email">Email Desc</option>
+		</select>
+	</div>
+	<input class="form-control" type="text" placeholder="Search.." ng-model="searchName">
+	<table class="table table-condensed">
+		<thead class="bg-success" style="font-variant: small-caps">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Image</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody id="myTable">
+			<tr ng-repeat="user in pager.users | filter:searchName | orderBy:sortColumn">
+				<td>{{user.fullname}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.photo}}</td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<button ng-click="edit(user)" class="btn btn-warning glyphicon glyphicon-edit"></button>
+						<button ng-click="delete(user)" class="btn btn-danger glyphicon glyphicon-trash"></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-footer text-center">
+		<button ng-click="pager.first()" class="btn btn-danger">
+			<b class="glyphicon glyphicon-hand-up"></b>
+		</button>
+		<button ng-click="pager.prev()" class="btn btn-primary">
+			<b class="glyphicon glyphicon-hand-left"></b>
+		</button>
+		<button class="btn btn-success">{{pager.page+1}} of {{pager.count}}</button>	
+		<button ng-click="pager.next()" class="btn btn-primary">
+			<b class="glyphicon glyphicon-hand-right"></b>
+		</button>
+		<button ng-click="pager.last()" class="btn btn-danger">
+			<b class="glyphicon glyphicon-hand-down"></b>
+		</button>
+	</div>
+</div>

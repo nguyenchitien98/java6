@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+th:replace="~{/layout/index :: dynamic(~{::main})}">
+<main>
+			<div>
+				<div class="text-center"> 
+					<h3>You have signed up success fully</h3>
+					<h4><a th:href="@{/security/login/form}">Click here to login</a></h4>
+				</div>
+			</div>
+	
+		
+</main>

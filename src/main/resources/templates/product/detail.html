@@ -19,7 +19,7 @@ th:replace="~{/layout/index :: dynamic(~{::main})}">
 					</ul>
 				</div>
 				<div class="panel-footer text-right">
-					<button class="btn btn-success">
+					<button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-success">
 						<i class="glyphicon glyphicon-shopping-cart"></i>
 					</button>
 				</div>

@@ -20,13 +20,18 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 				this.items.push(resp.data);
 				this.saveToLocalStorage();
 			})
-		}
+			
+		};
+			// Lấy đường dẫn bằng jquery
+			//var img= $("#my-img");
+		   // alert(img.attr("src"));
+		  	
 		},
 		
 		//xóa sản phẩm khỏi giỏ hàng
 		remove(id){
 			var index = this.items.findIndex(item=> item.id==id);
-			this.items.splice(index,1)
+			this.items.splice(index,1);
 			this.saveToLocalStorage();
 		},
 		

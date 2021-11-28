@@ -3,14 +3,16 @@
 th:replace="~{/layout/index :: dynamic(~{::main})}">
 <body>
 	<main class="row">
+		<div class="text-center" style="color: blue" ><h1 th:text="#{label.listpro}"></h1></div><hr>
 		<div th:each="p: ${items}" class="col-sm-4">
 			<div class="panel panle-primary poly-item text-center">
 				<div class="panel-heading">
 					<div class="panel-tiltle" th:utext="${p.name}"></div>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body"> 
 					<a th:href="@{|/product/detail/${p.id}|}">
-						<img th:src="@{|/assets/images/${p.image}|}">
+						 <img id="my-img" th:src="@{|/assets/images/${p.image}|}">
+						
 					</a>
 				</div>
 				<div class="panel-footer text-right">
@@ -21,6 +23,23 @@ th:replace="~{/layout/index :: dynamic(~{::main})}">
 				</div>
 			</div>
 		</div>
+		<div th:if="${tag == null}" class="text-center">
+		<!-- 
+				 <div th:if="${thuoctinh.name == null}" class="text-center"> 
+				<div th:if="${variable != null && variable.name != null}" th:text="${variable.name}">
+		-->
+		<ul class="pagination">
+				<li class="page-item"><a
+					th:href="@{|/product/list?page=${ page - 1 }|}" class="page-link">Previous</a>
+				</li>
+				<li class="page-item"><a class="page-link">[[${page+1}]]</a></li>
+				<li class="page-item"><a
+					th:href="@{|/product/list?page=${ page + 1 }|}" class="page-link">Next</a>
+				</li>
+		</ul>
+		</div>
+		
 	</main>
 </body>
 </html>
+

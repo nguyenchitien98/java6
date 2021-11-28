@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+th:replace="~{/layout/index :: dynamic(~{::main})}">
+<main>
+	<form th:action="@{/register/create}" th:object="${account}"  method="POST" 
+			 enctype="multipart/form-data"
+		class="col-sm-8 col-sm-offset-2">
+		<div class="panel panel-primary">
+			<div class="panel-heading" th:text="#{label.register}"></div>
+			<div class="panel-body">
+				<div class="form-group">
+					<div th:text="#{label.userName}"></div>
+					<input type="text" th:field="*{username}" placeholder="Enter User Name" class="form-control">
+					<i th:errors="*{username}" style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<div th:text="#{label.fullName}"> </div>
+					<input type="text" th:field="*{fullname}" placeholder="Enter Full Name" class="form-control">
+					<i th:errors="*{fullname}" style="color: red"></i>
+				</div>
+				
+				<div class="form-group">
+					<div th:text="#{label.password}"></div>
+					<input type="password" th:field="*{password}" placeholder="Enter Your Password" class="form-control">
+					<i th:errors="*{password}" style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<div>Email: </div>
+					<input type="email" th:field="*{email}" placeholder="Enter Your Email" class="form-control" >
+					<i th:errors="*{email}" style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<div th:text="#{label.avatar}"> </div>
+					<input type="file" name="imageFile" placeholder="Enter Your image" class="form-control" >
+					<i th:errors="*{photo}" style="color: red"></i>
+				</div>
+			</div>
+			<div class="panel-footer text-right">
+				<i class="pull-left text-danger" th:text="${message}"></i>
+				<button class="btn btn-success" th:text="#{nav.signUp}"></button>
+				 
+			</div>
+		</div>
+	</form>
+</main>
